@@ -53,7 +53,6 @@ public class Heap<E extends Comparable<E>> {
             hundir(1);//Recolocar posicion de la raiz
             return e;
         }
-
     }
 
     //metodo de recolocar: hundir
@@ -89,7 +88,6 @@ public class Heap<E extends Comparable<E>> {
                         }
                     }
                 }
-
             } else {
                 if (vector[hijo].compareTo(temporal) > 0) {//primer objeto mayor que el segundo, menor que 0 menor primer objeto que el segundo
                     vector[hueco] = vector[hijo];//intercambiar  
@@ -101,24 +99,21 @@ public class Heap<E extends Comparable<E>> {
             }
         }//Fin del while
     }
-    
-    
-    
+
     //Heapsort
     //1ºmeto los elementos en el heap, introducir()
     //2ºarreglarheap
-    
     //1ºy2ºpaso, se puede implementar solo con el insertar pero es menos eficiente
-    
     //3ºsuprimir()elementos heap
-    
     //Ejercicio2
-    
-    public void introducir(E e){
-        
+    public void introducir(E e) {
+        vector[numElem++] = e;
     }
-    public void arreglarHeap(){
-    
+
+    public void arreglarHeap() {
+        for (int i = numElem/2; i > 0; i--) {
+            hundir(i);
+        }
     }
 
 }
