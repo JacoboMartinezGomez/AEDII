@@ -80,11 +80,13 @@ public class Practica5 {
             if (hijo.esVacio()) {
                 return true;
             } else {
-                E hijomenor = hijo.raiz();
-                while(!hijo.esVacio() && seleccion(hijo)){
-                    
+                E hijomenor = hijo.raiz();//variable para menor
+                while(!hijo.esVacio() && seleccion(hijo)){//buscar menro de los hijos
+                    if(hijo.raiz().compareTo(hijomenor)<0) hijomenor = hijo.raiz();//mirar compareto
+                    hijo = hijo.hermanoDer();
                 
                 }
+                return (hijo.esVacio() && hijomenor.equals(arbol.raiz()));//por ultimo comprobar con la raiz del arbol
             }
 
         }
