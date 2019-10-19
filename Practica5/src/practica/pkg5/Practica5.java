@@ -6,6 +6,8 @@
 package practica.pkg5;
 
 import arbolGeneral.*;
+import cola.*;
+import lista.*;
 
 /**
  *
@@ -170,18 +172,57 @@ public class Practica5 {
     }
 //8. Haciendo uso de una cola, escribe un método que muestre el recorrido en anchura de un árbol general.
 
-    public static <E> void anchura(ArbolGeneral<E> a) {
+    public static <E> void anchura(ArbolGeneral<E> arbol) {
+        Cola<ArbolGeneral<E>> c = new EnlazadaCola<>();
+        c.insertar(arbol);
+        do {
+            arbol = c.suprimir();
+            if (!arbol.esVacio()) {
+                System.out.println(arbol.raiz() + " ");
+                ArbolGeneral<E> hijo = arbol.hijoMasIzq();
+                while (!hijo.esVacio()) {
+                    c.insertar(hijo);
+                    hijo = hijo.hermanoDer();
+                }
 
+            }
+        } while (!c.esVacio());
     }
 
 //9. Escribe un método que cuente el número de nodos pares en un árbol de enteros que se pasa como parámetro: el siguiente método:
     public static int numPares(ArbolGeneral<Integer> arbol) {
+        if (arbol.esVacio()) {
+            return 0;
+        } else {
+            int contador = 0;
+            if (arbol.raiz() % 2 == 0) {
+                contador++;
+            }
+            ArbolGeneral<Integer> hijo = arbol.hijoMasIzq();
+            while (!hijo.esVacio()) {
+                contador += numPares(hijo);
+                hijo = hijo.hermanoDer();
+            }
+
+            return contador;
+        }
 
     }
 //10. Escribe un método que dado un árbol general y una lista que se pasa como parámetro, guarde en la lista las hojas del árbol general.
 
-    public static <E> void hojas(ArbolGeneral<E> arbol, List<E> lista) {
-
+    public static <E> void hojas(ArbolGeneral<E> arbol, Lista<E> lista) {
+        if(!arbol.esVacio()){
+            if(arbol.hijoMasIzq().esVacio()){
+                lista.insertarFinal(arbol.raiz());
+            }
+            else{
+                 ArbolGeneral<E> hijo = arbol.hijoMasIzq();
+                 while(!hijo.esVacio()){
+                     hojas(hijo, lista);
+                     hijo = hijo.hermanoDer();
+                 }
+            }
+        }
     }
 
 }
