@@ -7,7 +7,7 @@ package practica.pkg5;
 
 import arbolGeneral.*;
 import cola.*;
-import lista.*;
+import java.util.List;
 
 /**
  *
@@ -210,13 +210,13 @@ public class Practica5 {
     }
 //10. Escribe un método que dado un árbol general y una lista que se pasa como parámetro, guarde en la lista las hojas del árbol general.
 
-    public static <E> void hojas(ArbolGeneral<E> arbol, Lista<E> lista) {
+    public static void hojas(ArbolGeneral<Integer> arbol, List<Integer> lista) {
         if(!arbol.esVacio()){
             if(arbol.hijoMasIzq().esVacio()){
-                lista.insertarFinal(arbol.raiz());
+                lista.add(arbol.raiz());
             }
             else{
-                 ArbolGeneral<E> hijo = arbol.hijoMasIzq();
+                 ArbolGeneral<Integer> hijo = arbol.hijoMasIzq();
                  while(!hijo.esVacio()){
                      hojas(hijo, lista);
                      hijo = hijo.hermanoDer();

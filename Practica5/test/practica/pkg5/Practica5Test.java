@@ -164,62 +164,62 @@ public class Practica5Test {
     /**
      * Test of anchura method, of class SolActividad5.
      */
-//    @Test
-//    public void testAnchuraTrue() {
-//        System.out.println("anchura si");
-//        ByteArrayOutputStream output = new ByteArrayOutputStream();
-//        PrintStream ps = new PrintStream(output);
-//        System.setOut(ps); // Esto hace que System.out escriba en "output" en lugar de escribir por consola
-//        Practica5.anchura(arbol4);
-//        String written = output.toString(); // Este toString recupera lo escrito en "output"
-//        assertEquals("7 6 4 3 5 2 1 ", written);
-//    }
-//    @Test
-//    public void testAnchuraFalse() {
-//        System.out.println("anchura no");
-//        ByteArrayOutputStream output = new ByteArrayOutputStream();
-//        PrintStream ps = new PrintStream(output);
-//        System.setOut(ps); // Esto hace que System.out escriba en "output" en lugar de escribir por consola
-//        Practica5.anchura(arbol4);
-//        String written = output.toString(); // Este toString recupera lo escrito en "output"
-//        assertNotEquals("7 6 4 3 2 1", written);
-//    }
-//
-//    /**
-//     * Test of numNodosPares method, of class SolActividad5.
-//     */
-//    @Test
-//    public void testNumNodosParesTres() {
-//        System.out.println("numNodosPares");
-//        int expResult = 3;
-//        int result = Practica5.numNodosPares(arbol4);
-//        assertEquals(expResult, result);
-//    }
-//    @Test
-//    public void testNumNodosParesUno() {
-//        System.out.println("numNodosPares");
-//        int expResult = 1;
-//        int result = Practica5.numNodosPares(arbolTres);
-//        assertEquals(expResult, result);
-//    }
-//
-//    /**
-//     * Test of hojas method, of class SolActividad5.
-//     */
-//    @Test
-//    public void testHojasUna() {
-//        System.out.println("hojas una");
-//        List<Integer> result = new LinkedList<>();
-//        List<Integer> expResult = Arrays.asList(2);
-//        Practica5.hojas(arbol1, result);
-//        assertEquals(expResult, result);
-//    }
-//    public void testHojasCuatro() {
-//        System.out.println("hojas cuatro");
-//        List<Integer> result = new LinkedList<>();
-//        List<Integer> expResult = Arrays.asList(2,1,3,5);
-//        Practica5.hojas(arbol1, result);
-//        assertEquals(expResult, result);
-//    }
-//    
+    @Test
+    public void testAnchuraTrue() {
+        System.out.println("anchura si");
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
+        PrintStream ps = new PrintStream(output);
+        System.setOut(ps); // Esto hace que System.out escriba en "output" en lugar de escribir por consola
+        Practica5.anchura(arbol4);
+        String written = output.toString(); // Este toString recupera lo escrito en "output"
+        assertEquals("7 6 4 3 5 2 1 ", written);
+    }
+    @Test
+    public void testAnchuraFalse() {
+        System.out.println("anchura no");
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
+        PrintStream ps = new PrintStream(output);
+        System.setOut(ps); // Esto hace que System.out escriba en "output" en lugar de escribir por consola
+        Practica5.anchura(arbol4);
+        String written = output.toString(); // Este toString recupera lo escrito en "output"
+        assertNotEquals("7 6 4 3 2 1", written);
+    }
+
+    /**
+     * Test of numNodosPares method, of class SolActividad5.
+     */
+    @Test
+    public void testNumNodosParesTres() {
+        System.out.println("numNodosPares");
+        int expResult = 3;
+        int result = Practica5.numPares(arbol4);
+        assertEquals(expResult, result);
+    }
+    @Test
+    public void testNumNodosParesUno() {
+        System.out.println("numNodosPares");
+        int expResult = 1;
+        int result = Practica5.numPares(arbolTres);
+        assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of hojas method, of class SolActividad5.
+     */
+    @Test
+    public void testHojasUna() {
+        System.out.println("hojas una");
+        List<Integer> result = new LinkedList<>();
+        List<Integer> expResult = Arrays.asList(2);
+        Practica5.hojas(arbol1, result);
+        assertEquals(expResult, result);
+    }
+    public void testHojasCuatro() {
+        System.out.println("hojas cuatro");
+        List<Integer> result = new LinkedList<>();
+        List<Integer> expResult = Arrays.asList(2,1,3,5);
+        Practica5.hojas(arbol1, result);
+        assertEquals(expResult, result);
+    }
+    
 }
