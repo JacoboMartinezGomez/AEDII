@@ -81,15 +81,106 @@ public class Practica5 {
                 return true;
             } else {
                 E hijomenor = hijo.raiz();//variable para menor
-                while(!hijo.esVacio() && seleccion(hijo)){//buscar menro de los hijos
-                    if(hijo.raiz().compareTo(hijomenor)<0) hijomenor = hijo.raiz();//mirar compareto
+                while (!hijo.esVacio() && seleccion(hijo)) {//buscar menro de los hijos
+                    if (hijo.raiz().compareTo(hijomenor) < 0) {
+                        hijomenor = hijo.raiz();//mirar compareto
+                    }
                     hijo = hijo.hermanoDer();
-                
+
                 }
                 return (hijo.esVacio() && hijomenor.equals(arbol.raiz()));//por ultimo comprobar con la raiz del arbol
             }
 
         }
+
+    }
+
+//5. Escribe un método que determine el nivel de un elemento concreto en el árbol general.
+    public static <E> int nivel(ArbolGeneral<E> arbol, E elemento) {
+        if (arbol.esVacio()) {
+            return -1;//No se encontro el elemento
+        } else {
+            if (arbol.raiz().equals(elemento)) {
+                return 0;
+            } else {
+                ArbolGeneral<E> hijo = arbol.hijoMasIzq();
+                while (!hijo.esVacio()) {
+                    int nivel = nivel(hijo, elemento);
+                    if (nivel == -1) {
+                        hijo = hijo.hermanoDer();
+                    } else {
+                        return 1 + nivel;
+                    }
+                }
+                return -1;// No se encontro el elemento
+            }
+        }
+    }
+//6. Escribe un método que devuelve el grado de un árbol general. 
+//El grado de un árbol es el máximo de los grados de sus nodos.    
+
+    public static <E> int grado(ArbolGeneral<E> arbol) {
+        if (arbol.esVacio()) {
+            return 0;
+        } else {
+            int nGrado = 0;
+            ArbolGeneral<E> hijo = arbol.hijoMasIzq();
+            while (!hijo.esVacio()) {
+                nGrado++;
+                hijo = hijo.hermanoDer();
+            }
+            int maxGrado = nGrado;
+            hijo = arbol.hijoMasIzq();
+            while (!hijo.esVacio()) {
+                int gradoActual = grado(hijo);
+                if (gradoActual > maxGrado) {
+                    maxGrado = gradoActual;
+
+                }
+                hijo = hijo.hermanoDer();
+            }
+            return maxGrado;
+        }
+
+    }
+
+//7. Escribe un método que devuelva la altura de un árbol general.    
+    public static <E> int altura(ArbolGeneral<E> arbol) {
+        if (arbol.esVacio()) {
+            return 0;
+        } else {
+            if (arbol.hijoMasIzq().esVacio()) {
+                return 0;
+
+            } else {
+                int maxAltura = 0;
+                int alturaAct = 0;
+                ArbolGeneral<E> hijo = arbol.hijoMasIzq();
+                while (!hijo.esVacio()) {
+                    alturaAct = altura(hijo);
+                    if (alturaAct > maxAltura) {
+                        maxAltura = alturaAct;//comprueba que sea mayor la altura de cada nodo. si es igual no se suma
+                    }
+                    hijo = hijo.hermanoDer();
+                }
+                return maxAltura + 1;
+            }
+        }
+
+    }
+//8. Haciendo uso de una cola, escribe un método que muestre el recorrido en anchura de un árbol general.
+
+    public static <E> void anchura(ArbolGeneral<E> a) {
+
+    }
+
+//9. Escribe un método que cuente el número de nodos pares en un árbol de enteros que se pasa como parámetro: el siguiente método:
+    public static int numPares(ArbolGeneral<Integer> arbol) {
+
+    }
+//10. Escribe un método que dado un árbol general y una lista que se pasa como parámetro, guarde en la lista las hojas del árbol general.
+
+    public static <E> void hojas(ArbolGeneral<E> arbol, List<E> lista) {
 
     }
 
