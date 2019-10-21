@@ -224,5 +224,48 @@ public class Practica5 {
             }
         }
     }
+    
+    
+    public static <E> boolean equilibrado(ArbolGeneral<E> arbol) {
+    
+        if(arbol.esVacio()){
+            return true;
+        }
+        else{
+            int num = numSubarboles(arbol);            
+            ArbolGeneral<E> hijo = arbol.hijoMasIzq();
+            while(!hijo.esVacio()){
+                if(numSubarboles(hijo)!= num){
+                return false;
+                }
+                hijo = hijo.hermanoDer();
+            }
+            
+        }
+        return true;
+    }
+    
+    
+    public static <E> int numSubarboles(ArbolGeneral<E> arbol){
+        if(arbol.esVacio()) return 0;
+        else{
+             ArbolGeneral<E> hijo = arbol.hijoMasIzq();
+             int cont = 0;
+             while(!hijo.esVacio()){
+                 cont++;
+                 hijo = hijo.hermanoDer();
+             }
+             return cont;
+        }
+        
+    }
+    
+    
+    
+    
+    
+    
+    
+    
 
 }

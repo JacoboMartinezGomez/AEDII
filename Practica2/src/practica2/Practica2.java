@@ -188,4 +188,43 @@ public class Practica2 {
 
     }
 
+//Examen 2016
+//Arbol Rojo-Negro
+//    public static <E> boolean camino(ArbolBinario<E> arbol) {
+//        if (arbol.esVacio()) {
+//            return true;
+//        }
+//        else{
+//            int nodosIzq = numNodosRojo(arbol.hijoIzq());
+//            int nodosDer = numNodosRojo(arbol.hijoDer());
+//            if(mathabs(nodosIzq-nodosDer)>1) return false;
+//            else{return camino(arbol.hijoIzq()) && camino(arbol.hijoDer());
+//            }
+//        }
+//
+//    }
+//    
+//    private static <E> int numNodosRojo(ArbolBinario<E> arbol) {
+//        if (arbol.esVacio()) {
+//            return 0;
+//        } else {
+//            if (arbol.raiz() == 'R') {
+//                return 1 + numNodosRojo(arbol.hijoIzq()) + numNodosRojo(arbol.hijoDer());
+//            }
+//            else return numNodosRojo(arbol.hijoIzq())+ numNodosRojo(arbol.hijoDer());
+//        }
+//    }
+//    
+//    public static <E> boolean rojo-negro(ArbolBinario<E> arbol){
+//        if(arbol.esVacio()) return true;
+//        else{
+//            if(arbol.hijoIzq().esVacio() && arbol.hijoDer().esVacio()) return false;
+//        }
+//  }
+    
+    
+    
+    
+
+
 }
