@@ -5,8 +5,10 @@
  */
 package ejercicio2c;
 
-import java.util.*;
+//import java.util.*;
 import grafo.*;
+import java.util.Iterator;
+import mapa.*;
 
 /**
  *
@@ -14,13 +16,13 @@ import grafo.*;
  */
 public class AlgNumeroCromatico {
     
-    public static <E> String cogerColor(String [] colores, Grafo<E,Integer> g, HashMap<Vertice<E>, String> mapa, Vertice<E> v){
+    public static <E> String cogerColor(String [] colores, Grafo<E,Integer> g, Map<Vertice<E>, String> mapa, Vertice<E> v){
         Iterator <Vertice<E>> it = g.adyacentes(v); //iterador igual a los vertices adyacentes(cercanos/siguientes) al vertice v
         int i=0;
         Vertice<E> vActual;
         while(it.hasNext()){ //mientrs el iterador tenga un vertice siguiente
             vActual = it.next(); //igualamos el vertice actual(en el que estamos) al primer vertice adyacente
-            if(mapa.getValor(vActual).equals(colores[i])){ //comprobamos que el valor(color) del vertice actual del mapa es igual al color seleccionado del array de colores.
+            if(mapa.get(vActual).equals(colores[i])){ //comprobamos que el valor(color) del vertice actual del mapa es igual al color seleccionado del array de colores.
                 i++; //Si son iguales avanzamos a otro color en el array de colores.
                 it = g.adyacentes(v);
             }

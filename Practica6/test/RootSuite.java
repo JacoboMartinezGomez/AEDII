@@ -3,18 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ejercicio2b;
 
+import ejercicio2A.Ejercicio2ASuite;
+import ejercicio2b.Ejercicio2bSuite;
+import ejercicio2c.Ejercicio2cSuite;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
+import practica6.Practica6Suite;
 
 /**
  *
  * @author Jacobo
  */
-@   org.junit.runner.RunWith(org.junit.runners.Suite.class)
-@   org.junit.runners.Suite.SuiteClasses({ExtendAbreviaturasTest.class})
-public class Ejercicio2bSuite {
+@org.junit.runner.RunWith(org.junit.runners.Suite.class)
+@org.junit.runners.Suite.SuiteClasses({Practica6Suite.class, Ejercicio2bSuite.class, Ejercicio2ASuite.class, Ejercicio2cSuite.class})
+public class RootSuite {
 
     @org.junit.BeforeClass
     public static void setUpClass() throws Exception {

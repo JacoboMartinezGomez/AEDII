@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ejerciciografo;
+package ejercicio2A;
 
 import java.util.HashSet;
 import java.util.Iterator;
@@ -24,13 +24,11 @@ public class MapaAdyacencia<E, T> implements Grafo<E, T> {
         listaVertices = new LinkedList<>(); //Se crea una lista enlzada vacia
     }
 
-    @Override
     //Devuelve true si la lista es vacia
     public boolean esVacio() {
         return listaVertices.isEmpty();
     }
 
-    @Override
     //Devuelve true si esta el vertice v en la lista
     public boolean estaVertice(Vertice<E> v) {
         for (VerticeConMap<E, T> actual : listaVertices) { //Recorro todos los vertices de la lista
@@ -41,7 +39,6 @@ public class MapaAdyacencia<E, T> implements Grafo<E, T> {
         return false;
     }
 
-    @Override
     //Devuelve true si esta el arco a en la lista
     public boolean estaArco(Arco<E, T> a) {
         for (VerticeConMap<E, T> actual : listaVertices) { //Recorro todos los vertices de la lista
@@ -56,7 +53,6 @@ public class MapaAdyacencia<E, T> implements Grafo<E, T> {
         return false;
     }
 
-    @Override
     //Devuelve un iterador que contiene a todos los vertices
     public Iterator<Vertice<E>> vertices() {
         HashSet<Vertice<E>> contenedor = new HashSet<>(); //Creo un objeto vacio de tipo HashSet que servirá de contenedor de vertices
@@ -66,7 +62,6 @@ public class MapaAdyacencia<E, T> implements Grafo<E, T> {
         return contenedor.iterator(); //Devuelve el iterador del objeto HashSet
     }
 
-    @Override
     //Devuelve un iterador que contiene a todos los arcos
     public Iterator<Arco<E, T>> arcos() {
         HashSet<Arco<E, T>> contenedor = new HashSet<>(); //Creo un objeto vacio de tipo HashSet que servirá de contenedor de arcos
@@ -87,7 +82,6 @@ public class MapaAdyacencia<E, T> implements Grafo<E, T> {
         return contenedor.iterator(); //Devuelve el iterador del objeto HashSet
     }
 
-    @Override
     //Devuelve un iterador que contiene a todos los vertices adyacengtes a uno pasado como parámetro
     public Iterator<Vertice<E>> adyacentes(Vertice<E> v) {
         Iterator it2 = null;//Creo un iterador y lo inicializo a null
@@ -103,7 +97,6 @@ public class MapaAdyacencia<E, T> implements Grafo<E, T> {
         return it2; //Devuelve el iteador a null en caso de que no tenga adyacentes
     }
 
-    @Override
     //Inserta un vertice pasado como parámetro en la lista
     public void insertarVertice(Vertice<E> v) {
         if (!estaVertice(v)) { //Compruebo si el vertice esta en la lista, si no esta se inserta
@@ -113,7 +106,6 @@ public class MapaAdyacencia<E, T> implements Grafo<E, T> {
 
     }
 
-    @Override
     //Inserta un arco
     public void insertarArco(Arco<E, T> a) {
         if (!estaArco(a)) { //Comprueba si no está el arco
@@ -136,7 +128,6 @@ public class MapaAdyacencia<E, T> implements Grafo<E, T> {
         }
     }
 
-    @Override
     //Elimina un vertice
     public void eliminarVertice(Vertice<E> v) {
         if (estaVertice(v)) { //Comprueba si está en la lista el vertice a borrar
@@ -145,7 +136,6 @@ public class MapaAdyacencia<E, T> implements Grafo<E, T> {
         }
     }
 
-    @Override
     //Elimina un arco
     public void eliminarArco(Arco<E, T> a) {
         for (VerticeConMap<E, T> actual : listaVertices) { //Recorro los vertices
