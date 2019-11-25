@@ -179,6 +179,20 @@ public class HashMap<K, V> implements TADMap<K, V> {
         public V getValor() {
             return valor;
         }
+        
+        public V getValor(K clave){
+            int indice = funcionHash(clave);
+            V valor = null;
+            
+            for (Entry<K, V> var : datos[indice]) {
+                if(var.getClave().equals(clave)){
+                    valor = var.getValor();
+                }
+                    
+            }
+            
+            return valor;
+        }
 
         @Override
         public void setValor(V valorActual) {

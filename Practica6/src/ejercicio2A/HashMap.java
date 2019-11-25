@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ejerciciografo;
+package ejercicio2A;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -42,7 +42,6 @@ public class HashMap<K, V> implements TADMap<K, V> {
         return indice;
     }
 
-    @Override
     public V getValor(K clave) {
         int indice = funcionHash(clave);
         //System.out.println(indice);
@@ -54,7 +53,6 @@ public class HashMap<K, V> implements TADMap<K, V> {
         return null;
     }
 
-    @Override
     public void insertar(K clave, V valor) {
         //Obtener indice
         int indice = funcionHash(clave);
@@ -74,7 +72,6 @@ public class HashMap<K, V> implements TADMap<K, V> {
         }
     }
     
-    @Override
     public void eliminar(K clave) {
         int indice = funcionHash(clave);
         if (datos[indice].contains(new HashEntry<K, V>(clave, getValor(clave)))) {
@@ -85,7 +82,6 @@ public class HashMap<K, V> implements TADMap<K, V> {
         }
     }
 
-    @Override
     public void modificarValor(K clave, V valor) {
         //Obtener indice
         int indice = funcionHash(clave);
@@ -97,7 +93,6 @@ public class HashMap<K, V> implements TADMap<K, V> {
             }
     }
 
-    @Override
     public Iterator<K> getClaves() {
         Collection<K> clavesVector = new ArrayList<>();
         for (int indice=0; indice<capacidad; indice++){
@@ -108,7 +103,6 @@ public class HashMap<K, V> implements TADMap<K, V> {
         return clavesVector.iterator();
     }
 
-    @Override
     public Iterator<V> getValores() {
         Collection<V> valoresVector = new ArrayList<>();
         for (int indice=0; indice<capacidad; indice++){
@@ -120,7 +114,6 @@ public class HashMap<K, V> implements TADMap<K, V> {
         
     }
 
-    @Override
     public boolean contieneClave(K clave) {
         int indice = funcionHash(clave);
         for (TADMap.Entry<K, V> entrada : datos[indice]) {
@@ -133,7 +126,6 @@ public class HashMap<K, V> implements TADMap<K, V> {
         
     }
 
-    @Override
     public boolean contieneValor(V valor) {
         for (int i = 0; i < capacidad; i++) {
             if(datos[i].get(i).getValor().equals(valor))
@@ -142,17 +134,14 @@ public class HashMap<K, V> implements TADMap<K, V> {
         return false;
     }
 
-    @Override
     public int tamaño() {
         return numElementos;
     }
 
-    @Override
     public boolean esVacio() {
         return numElementos == 0;
     }
 
-    @Override
     public void limpiar() {
         for (int i = 0; i < capacidad; i++) {
             datos[i].clear();
@@ -171,17 +160,14 @@ public class HashMap<K, V> implements TADMap<K, V> {
             this.valor = valor;
         }
 
-        @Override
         public K getClave() {
             return clave;
         }
 
-        @Override
         public V getValor() {
             return valor;
         }
 
-        @Override
         public void setValor(V valorActual) {
             this.valor = valorActual;
         }
