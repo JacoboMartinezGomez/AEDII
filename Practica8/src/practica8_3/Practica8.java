@@ -21,14 +21,13 @@ public class Practica8 {
      * @param args the command line arguments
      * @return 
      */
+ 
    public static List<String> llenarCDVoraz(int capacidadMaxima, Map<String,Integer> espacioProgramas) {
    List<String> cd = new LinkedList<>();
    int espacioOcupado = 0;
-   boolean llenarMas = true;
+   boolean poderLlenar = true;
    int k =0;
-   // Mientras no se haya cumplido el objetivo con los objetos disponibles
-   while ( espacioOcupado < capacidadMaxima && llenarMas){
-        // buscar un programa que “quepa”
+   while ( espacioOcupado < capacidadMaxima && poderLlenar){
         String programa = mayor(capacidadMaxima-espacioOcupado,espacioProgramas,cd);
         if ( programa != null){
            k = espacioProgramas.get(programa);
@@ -36,30 +35,64 @@ public class Practica8 {
            cd.add(programa);
            espacioOcupado += k;
         }
-        else llenarMas=false; //No se puede llenar más, devolvemos el CD
+        else {
+            poderLlenar=false; 
+        }
     }
-
    return cd;
 }
-
-private static String mayor (int parcial, Map<String,Integer> programas, List<String> sol){
-     String maxProg=null;
-     int maxEsp = 0;
+private static String mayor (int parcial, Map<String,Integer> programas, List<String> cd){
+     String programaMayor=null;
+     int maximoEspacio = 0;
      Iterator<String> it_prog = programas.getClaves();
      while (it_prog.hasNext()){
-      String prog = it_prog.next();
-      int esp = programas.get(prog);
-      if (!sol.contains(prog) && esp > maxEsp && esp <= parcial){
-                maxEsp = esp;
-                maxProg = prog;
+      String programa = it_prog.next();
+      int espacio = programas.get(programa);
+      if (!cd.contains(programa) && espacio > maximoEspacio && espacio <= parcial){
+                maximoEspacio = espacio;
+                programaMayor = programa;
          }
      }
-
-    return maxProg;
+    return programaMayor;
 }
+  
+
+
+
+
+
+ //Ejercicio 8
+    public static Map<String,Integer> llenarMochila(int volumenMaximo, Map<String,Integer> cantidades, 
+                                                                       Map<String,Integer> volumenes){
+        int volActual = 0;
+        Map<String,Integer> toRet = new HashMap<>();
+        
+        String objeto = mayor(volumenMaximo-volActual, cantidades, volumenes);
+        if(objeto == null){
+            toRet = null;
+        }else{
+             toRet.insertar(objeto, volumenMaximo);
+             volumenMaximo = volumenMaximo - volumenes.get(objeto); 
+        }
+        
+    return toRet;
+    }
     
-    
-    
+    private static String mayor(int vol, Map<String,Integer> cantidades, Map<String,Integer> volumenes){
+        String toRet = null;
+        int maxVol = 0;
+        Iterator<String> claves = cantidades.getClaves();
+        while(claves.hasNext()){
+              String objeto = claves.next();
+              int volumen =  volumenes.get(objeto);
+              int cantidad = cantidades.get(objeto);
+              if(cantidad > 0 && vol > maxVol && volumen <= vol){
+                maxVol = volumen;
+                toRet = objeto;
+              }
+        }
+        return toRet;
+    }
     
     
     public static void main(String[] args) {
